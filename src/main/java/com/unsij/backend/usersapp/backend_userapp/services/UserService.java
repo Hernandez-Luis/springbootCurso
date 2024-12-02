@@ -7,8 +7,8 @@ import com.unsij.backend.usersapp.backend_userapp.models.entities.User;
 
 public interface UserService {
     List<User> findAll();
-    Optional<User> findById();
+    Optional<User> findById(Long id);
     User save (User user);
+    Optional<User> update(User user, Long id);
     void remove (Long id);
-    void delete (User user);
 }
