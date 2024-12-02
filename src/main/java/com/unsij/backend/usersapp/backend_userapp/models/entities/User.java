@@ -3,6 +3,10 @@ package com.unsij.backend.usersapp.backend_userapp.models.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,11 +17,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Este es un mensaje personalizado.")
     @Column(unique = true) // Se puede especificar el nombre de la columna en la BD Ejemplo: @Column(unique = true, name = "usuario")
     private String username;
 
+    @NotEmpty
     private String password;
 
+    @NotBlank
+    @Email
+    @Size(min = 3,max = 25)
     @Column(unique = true)
     private String email;
 
